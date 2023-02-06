@@ -20,16 +20,21 @@ const secondsEl = document.getElementById("seconds");
 const titleEl = document.getElementById("title");
 
 const now = new Date();
-const tomorrow = new Date("2023-02-06 09:30");
+const tomorrow = new Date("2023-02-07 10:01");
 const secToDate = parseInt((tomorrow - now) / 1000);
-
 
 titleEl.innerHTML = "Time to Monday 06-02-2023 09:30 ";
 let totalSeconds = secToDate;
 const timer = setInterval(stampaTempoTrascorso, 1000);
 stampaTempoTrascorso();
 function stampaTempoTrascorso() {
-  ++totalSeconds;
+  --totalSeconds;
+  // if (totalSeconds <= 0) {
+  //   clearInterval(timer);
+  // confetti({
+  //   particleCount: 100,
+  //   spread: 160,
+  // });
 
   const seconds = totalSeconds % 60;
   const minutes = parseInt((totalSeconds / 60) % 60);
@@ -41,5 +46,3 @@ function stampaTempoTrascorso() {
   hoursEl.innerHTML = hours < 10 ? "0" + hours : hours;
   daysEl.innerHTML = days < 10 ? "0" + days : days;
 }
-
-/
